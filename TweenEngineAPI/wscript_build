@@ -1,0 +1,51 @@
+#!/usr/bin/env python
+# encoding: utf-8
+# Copyright (c) 2012 SjB <steve@nca.uwo.ca>. All Rights Reserved.
+
+srcs = [
+    'Equations/Back.cs',
+    'Equations/Bounce.cs',
+    'Equations/Circ.cs',
+    'Equations/Cubic.cs',
+    'Equations/Elastic.cs',
+    'Equations/Expo.cs',
+    'Equations/Linear.cs',
+    'Equations/Quad.cs',
+    'Equations/Quart.cs',
+    'Equations/Quint.cs',
+    'Equations/Sine.cs',
+    'Paths/CatmullRom.cs',
+    'Paths/Linear.cs',
+    'Primitives/MutableFloat.cs',
+    'Primitives/MutableInteger.cs',
+    'Properties/AssemblyInfo.cs',
+    'BaseTween.cs',
+    'Pool.cs',
+    'Timeline.cs',
+    'Tween.cs',
+    'TweenAccessor.cs',
+    'TweenCallback.cs',
+    'TweenEquation.cs',
+    'TweenEquations.cs',
+    'TweenManager.cs',
+    'TweenPath.cs',
+    'TweenPaths.cs',
+    'TweenUtils.cs'
+]
+
+external_libs = []
+
+[bld.read_assembly(x, install_path = bld.env.default_app_install_path) for x in external_libs]
+
+uselib = []
+uselib.extend(external_libs)
+
+bld(
+    features = 'cs',
+    source = srcs,
+    install_path = bld.env.default_app_install_path,
+    type = "library",
+    gen = '{0}.dll'.format(bld.env.APPNAME),
+    name = bld.env.APPNAME,
+    use = uselib
+)

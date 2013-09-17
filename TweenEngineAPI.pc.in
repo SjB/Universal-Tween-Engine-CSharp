@@ -1,0 +1,8 @@
+prefix=@PREFIX@
+assemblies_dir=${prefix}/lib/@APPNAME@
+Libraries=${assemblies_dir}/@APPNAME@.dll
+
+Name: @APPNAME@
+Description: C# port of the Universal Tween Engine Java library.
+Version: @VERSION@
+Libs: -r:@APPNAME@.dll
