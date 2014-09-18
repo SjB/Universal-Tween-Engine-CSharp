@@ -4,6 +4,7 @@
  * @author Aurelien Ribon | http://www.aurelienribon.com/
  */
 
+using System;
 using TweenEngine;
 
 namespace TweenEngine
@@ -62,4 +63,17 @@ namespace TweenEngine
 
 		public abstract void OnEvent<T>(int type, IBaseTween source);
 	}
+
+    public delegate void TweenEventChangedEventHandler(object sender, TweenChangedTypeEventArgs args);
+
+    public class TweenChangedTypeEventArgs : EventArgs
+    {
+        public int Type { get; private set; }
+
+        public TweenChangedTypeEventArgs(int type)
+        {
+            Type = type;
+        }
+
+    }
 }

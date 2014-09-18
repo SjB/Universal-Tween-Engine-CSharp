@@ -40,6 +40,10 @@ namespace TweenEngine
 		internal bool isAutoRemoveEnabled;
 		internal bool isAutoStartEnabled;
 
+
+        // Event
+        public event TweenEventChangedEventHandler TweenEventChanged;
+
 		// -------------------------------------------------------------------------
 
 		protected internal virtual void Reset()
@@ -334,11 +338,8 @@ namespace TweenEngine
 
 		protected internal virtual void CallCallback(int type)
 		{
-			if (callback != null && (callbackTriggers & type) > 0)
-			{
-				// @TODO: Fix callbacks. Make them more C# ish.
-				//callback.OnEvent(type, this);
-			}
+            if (null != TweenEventChanged)
+                TweenEventChanged(this, new TweenChangedTypeEventArgs(type));
 		}
 
 		protected internal virtual bool IsReverse(int step)
@@ -682,6 +683,19 @@ namespace TweenEngine
 			InternalSetCallback(callback);
 			return ThisAsT();
 		}
+        /// <summary>Sets the callback.</summary>
+		/// <remarks>
+		/// Sets the callback. By default, it will be fired at the completion of the
+		/// tween or timeline (event COMPLETE). If you want to change this behavior
+		/// and add more triggers.
+		/// </remarks>
+		/// <seealso cref="TweenCallback">TweenCallback</seealso>
+
+        public virtual T SetCallback(TweenEventChangedEventHandler handler)
+        {
+            this.TweenEventChanged += handler;
+            return ThisAsT();
+        }
 
 		/// <summary>Changes the triggers of the callback.</summary>
 		/// <remarks>

@@ -851,7 +851,7 @@ namespace TweenEngine
 
 		/// <summary>Gets the type of the tween.</summary>
 		/// <remarks>Gets the type of the tween.</remarks>
-		public int GetType()
+		public new int GetType()
 		{
 			return type;
 		}

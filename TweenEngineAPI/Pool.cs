@@ -76,11 +76,11 @@ namespace TweenEngine
 			//objects.EnsureCapacity(minCapacity);
 		}
 
-		public interface Callback<T>
+		public interface Callback<O>
 		{
-			void OnPool(T obj);
+			void OnPool(O obj);
 
-			void OnUnPool(T obj);
+			void OnUnPool(O obj);
 		}
 	}
 }
