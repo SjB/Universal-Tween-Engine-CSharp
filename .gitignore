@@ -5,3 +5,22 @@ obj
 # mstest test results
 TestResults
 /*.suo
+# Created by https://www.gitignore.io
+
+### MonoDevelop ###
+#User Specific
+*.userprefs
+*.usertasks
+
+#Mono Project Files
+*.pidb
+*.resources
+test-results/
+
+# Created by https://www.gitignore.io
+
+### Waf ###
+# for projects that use Waf for building: http://code.google.com/p/waf/
+.waf-*
+.lock-*
+
